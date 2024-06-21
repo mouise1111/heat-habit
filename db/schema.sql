@@ -5,7 +5,7 @@ USE habits;
 -- Create habits table
 CREATE TABLE habits (
     habit_id INT AUTO_INCREMENT PRIMARY KEY,
-    habit_name VARCHAR(100) NOT NULL,
+    habit_name VARCHAR(100) NOT NULL UNIQUE,
     description TEXT
 );
 
