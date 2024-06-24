@@ -19,7 +19,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ./websites:/var/www/html
+      - ./web:/var/www/html
     depends_on:
       - db
 
