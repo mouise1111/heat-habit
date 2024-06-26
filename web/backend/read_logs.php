@@ -8,6 +8,9 @@ function read_habit_logs(){
   $stmt = $conn->prepare($selectQuery);
   $stmt->execute();
   $stmt->bind_result($isCompleted);
+  while($stmt->fetch()){
+    echo $isCompleted;
+  }
   echo $isCompleted;
   // $stmt->close();
 }
