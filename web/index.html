@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habit Tracker</title>
-    <link href="css/style.css" rel="stylesheet">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
-    <script src="./script.js" defer></script>
-  </head>
-  <body>
-    <h1>Habit tracker</h1>
-    <h3>Mouise Bashir</h3>
-    <div id="cal-heatmap-year">
-      <h5>Year view</h5>
-    </div>
-    <div id="cal-heatmap-month">
-      <h5>Month view</h5>
-    </div>
-  </body>
-</html>
+    <title>Display Habits Count</title>
+</head>
+<body>
+  <h1>hello world</h1>
+  <div id="habitCount"></div>
 
+    <script>
+        // Fetch data from backend using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/backend/read_habits.php', true); // Adjust the path based on your server setup
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                var response = JSON.parse(xhr.responseText);
+                document.getElementById('habitCount').textContent = 'Total habits: ' + response.habits_counter;
+            } else {
+                console.error('Error fetching data');
+            }
+        };
+        xhr.onerror = function() {
+            console.error('Error fetching data');
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
