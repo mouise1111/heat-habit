@@ -11,6 +11,9 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
+    <?php include './backend/connection.php'; include './backend/count_habits.php'; ?>
+    <h1><?php echo $variable; ?></h1>
+    <h1><?php echo $habits_counter; ?></h1>
     <h1>Habit tracker</h1>
     <h3>Mouise Bashir</h3>
     <div id="cal-heatmap-year">
