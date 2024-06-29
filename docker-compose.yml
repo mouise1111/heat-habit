@@ -11,10 +11,13 @@ services:
       MARIADB_USER: habits
       MARIADB_PASSWORD: habits
     volumes:
+      - db_data:/var/lib/mysql
       - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
 
   web:
-    image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile 
     restart: always
     ports:
       - '80:80'
@@ -23,4 +26,7 @@ services:
       - ./db/connection.php:/var/www/html/backend/connection.php
     depends_on:
       - db
+
+volumes: 
+  db_data:
 
