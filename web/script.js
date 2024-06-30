@@ -1,16 +1,5 @@
 const cal = new CalHeatmap();
-
-var data = [
-  { date: '2024-06-25', habit: 0 },
-  { date: '2024-06-26', habit: 1 },
-  { date: '2024-06-27', habit: 1 },
-  { date: '2024-06-27', habit: 1 },
-  { date: '2024-06-28', habit: 1 },
-  { date: '2024-06-28', habit: 1 },
-  { date: '2024-06-28', habit: 1 },
-  { date: '2024-06-28', habit: 1 },
-  { date: '2024-06-28', habit: 1 },
-];
+let habitsCounter = parseInt(document.getElementById('habits_counter').innerText.trim());
 
 cal.paint({
   range: 1,
@@ -19,17 +8,17 @@ cal.paint({
   subDomain: { type: 'day' },
   theme: 'dark',
   data: {
-    source: data,
+    source: habit_logs,
     type: 'json', // Specify the type of data source
-    x: 'date', // Property name for the date
-    y: 'habit', // Property name for the value
+    x: 'log_date', // Property name for the date
+    y: 'completed', // Property name for the value
     groupY: 'sum'
   },
   scale: {
     color: {
       scheme: 'RdYlGn',
       type: 'linear',
-      domain: [0, 5], // Domain adjusted for binary data
+      domain: [0, habitsCounter], // Domain adjusted for binary data
     },
   },
 });
