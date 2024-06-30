@@ -1,6 +1,4 @@
 <?php
-require __DIR__ . "/connection.php";
-
 function count_habits(){
   global $conn;
 
@@ -14,6 +12,4 @@ function count_habits(){
   $stmt->close();
 }
 
-// Output JSON response
-header('Content-Type: application/json');
-echo json_encode(['habits_counter' => count_habits()]);
+$habits_counter = count_habits();
