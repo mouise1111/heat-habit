@@ -1,6 +1,4 @@
 <?php
-require __DIR__ . "/connection.php";
-
 function read_habit_logs(){
   global $conn;
 
@@ -8,11 +6,21 @@ function read_habit_logs(){
   $stmt = $conn->prepare($selectQuery);
   $stmt->execute();
   $stmt->bind_result($isCompleted, $logDate, $habitId);
+  
+  $habitLogs = [];
   while($stmt->fetch()){
-    echo "\nCompleted: " . $isCompleted . " Date: " . $logDate . " Habit ID: " . $habitId;
-    return $isCompleted . $logDate . $habitId;
+    $habitLogs[] = [
+      'completed' => $isCompleted,
+      'log_date' => $logDate,
+      'habit_id' => $habitId
+    ];
   }
   $stmt->close();
+  
+  return $habitLogs;
 }
 
-read_habit_logs();
+$habit_logs = read_habit_logs();
+
+?>
+
