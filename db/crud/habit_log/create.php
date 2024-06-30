@@ -54,6 +54,6 @@ function insertLog(string $habit_name, string $log_date,bool $isCompleted){
 // Example usage
 // $running_habit = 'reading'; 
 // $isCompleted = 1;
-// $today = date('d,m,y');
+// $today = date('Y,m,d');
 // insertLog($running_habit, $today, $isCompleted);
 ?>
